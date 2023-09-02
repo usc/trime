@@ -51,12 +51,6 @@ jobs:
         run: |
           echo "set up keystore for release"
           echo "need help!!"
-
-      - name: Install dependency
-        run: ./script/dependency.sh
-
-      - name: Signing properties
-        run: |
           touch keystore.properties
           echo storePassword=39f1d6ea > keystore.properties
           echo keyPassword=39f1d6ea >> keystore.properties
@@ -64,6 +58,9 @@ jobs:
             
           echo "cat keystore.properties"
           cat keystore.properties
+
+      - name: Install dependency
+        run: ./script/dependency.sh
 
       - name: Build Trime
         run: make release

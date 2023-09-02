@@ -81,7 +81,7 @@ jobs:
       - name: Add JNI cache
         if: ${{ !steps.jni-cache.outputs.cache-hit }}
         # TODO: replace debug with release after we switched to "make release"
-        run: cp -R app/build/intermediates/stripped_native_libs/debug/out/lib app/prebuilt
+        run: cp -R app/build/intermediates/stripped_native_libs/release/out/lib app/prebuilt
 
       - name: Create release
         uses: ncipollo/release-action@v1

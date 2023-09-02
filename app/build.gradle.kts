@@ -89,7 +89,7 @@ android {
                 val props = Properties()
                 props.load(keyPropFile.inputStream())
 
-                storeFile = rootProject.file(props["storeFile"]!!)
+                storeFile = rootProject.file("release.keystore")
                 storePassword = props["storePassword"] as? String
                 keyAlias = props["keyAlias"] as? String
                 keyPassword = props["keyPassword"] as? String

@@ -48,13 +48,15 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Setup keystore
+        env:
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
         run: |
-          echo "set up keystore for release"
-          echo "need help!!"
           touch keystore.properties
-          echo storePassword=39f1d6ea > keystore.properties
-          echo keyPassword=39f1d6ea >> keystore.properties
-          echo keyAlias=android >> keystore.properties
+          echo storePassword="$SIGNING_STORE_PASSWORD" > keystore.properties
+          echo keyPassword="$SIGNING_KEY_PASSWORD" >> keystore.properties
+          echo keyAlias="$SIGNING_KEY_ALIAS" >> keystore.properties
             
           echo "cat keystore.properties"
           cat keystore.properties
